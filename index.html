@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cartinhas 💜</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+
+<style>
+body{
+    margin:0;
+    font-family:'Poppins', sans-serif;
+    background: linear-gradient(135deg,#4b0082,#7b1fa2,#b266ff);
+    display:flex;
+    justify-content:center;
+    align-items:flex-start;
+    min-height:100vh;
+    padding:40px 0;
+    color:white;
+}
+
+.container{
+    width:90%;
+    max-width:500px;
+    background: rgba(255,255,255,0.1);
+    padding:30px;
+    border-radius:20px;
+    backdrop-filter: blur(10px);
+    text-align:center;
+    animation: fadeIn 1s ease;
+}
+
+img{
+    width:220px;
+    border-radius:15px;
+    margin-bottom:20px;
+}
+
+button{
+    padding:12px 20px;
+    margin:10px;
+    border:none;
+    border-radius:10px;
+    background:white;
+    color:#6a0dad;
+    font-weight:600;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+button:hover{
+    transform:scale(1.05);
+    background:#e0c3ff;
+}
+
+input{
+    padding:10px;
+    border-radius:8px;
+    border:none;
+    margin-top:10px;
+}
+
+/* Envelope simples */
+.envelope{
+    display:none;
+    margin-top:20px;
+    animation: fadeIn 0.8s ease;
+}
+
+/* Carta */
+.carta{
+    display:none;
+    margin-top:20px;
+    background:white;
+    color:#333;
+    padding:20px;
+    border-radius:12px;
+    max-height:300px;
+    overflow-y:auto;
+    text-align:left;
+    animation: abrirCarta 0.8s ease;
+}
+
+@keyframes fadeIn{
+    from{opacity:0;}
+    to{opacity:1;}
+}
+
+@keyframes abrirCarta{
+    from{opacity:0; transform:scale(0.95);}
+    to{opacity:1; transform:scale(1);}
+}
+</style>
+</head>
+<body>
+
+<audio id="musica" loop>
+    <source src="Fernando Vinhote - Pelas Mãos de Maria (Clipe Oficial) - Fernando Vinhote (youtube).mp3" type="audio/mp3">
+</audio>
+
+<div class="container">
+
+    <h2>Cartinhas Secretas 💜</h2>
+
+    <img src="foto.jpeg" alt="Lucas Shimura e Lucas Miguel">
+
+    <div>
+        <button onclick="abrirSenha('shimura')">Lucas Shimura</button>
+        <button onclick="abrirSenha('miguel')">Lucas Miguel</button>
+    </div>
+
+    <div id="senhaArea"></div>
+
+    <div class="envelope" id="envelopeArea">
+        <p>📩 Clique para abrir a carta</p>
+        <button onclick="mostrarCarta()">Abrir Carta</button>
+    </div>
+
+    <div id="cartaShimura" class="carta">
+        <h3>💜 Para Lucas Shimura</h3>
+        <p>
+        Lucas Shimura,
+
+Que alegria imensa saber que você está vivendo o Acampamento Juvenil de Cambé! Eu tenho certeza de que esse encontro não é por acaso, Deus já tinha marcado esse momento com você muito antes de você imaginar.
+
+Eu não consigo deixar de lembrar do dia em que tocamos juntos no encontro do MJC, você no cajón, eu no violão (ou ao contrário ), mas o que realmente marcou não foi quem estava em qual instrumento, foi a presença de Deus ali. Foi tão simples, tão verdadeiro, e ao mesmo tempo tão cheio do Espírito Santo. Aquele dia me mostrou como é lindo quando a gente usa nossos dons para servir, quando a música vira oração e quando a amizade vira missão 🎶🤍
+
+Que nesse acampamento você sinta algo ainda maior. Que cada momento seja como aquela música que tocamos: cheio de entrega, verdade e amor por Deus. Que o Senhor renove seus talentos, fortaleça sua identidade como filho amado e te dê coragem para continuar dizendo “sim” ao chamado d’Ele.
+
+Se naquele dia nós tocamos instrumentos, que agora seja o próprio Deus tocando o seu coração. Que Ele cure, fortaleça, confirme e incendeie sua fé 🔥
+
+Você é muito especial, tem um coração disposto e um dom lindo de servir. Sou muito grato por compartilhar momentos assim com você. Que o Espírito Santo te abrace forte nesses dias e que você volte transformado, cheio de luz e testemunhos para contar.
+
+Estou rezando por você 
+Com muito carinho ❤️
+        </p>
+    </div>
+
+    <div id="cartaMiguel" class="carta">
+        <h3>💜 Para Lucas Miguel</h3>
+        <p>
+       Lucas Miguel,
+
+Meu coração se enche de alegria ao saber que você está vivendo o Acampamento Juvenil de Cambé. Não é apenas um encontro, é um chamado. Tenho certeza de que Deus preparou cada detalhe desses dias pensando em você, nas suas lutas, nos seus sonhos e em tudo aquilo que só Ele conhece no seu coração.
+
+Que você experimente o amor de Jesus de uma forma nova, íntima e transformadora. Que cada pregação seja como uma resposta, cada música como um abraço do céu e cada momento de oração como um encontro verdadeiro com Aquele que te ama infinitamente.
+
+Que Nossa Senhora te envolva com seu manto, te proteja e te ensine a dizer “sim” todos os dias, mesmo quando for difícil .
+
+Você é luz. Você é instrumento. Você tem um coração enorme e uma fé linda. Tenho certeza de que vai voltar diferente, mais forte nas provações, mais firme nas decisões e ainda mais apaixonado por Cristo.
+
+Viva intensamente cada segundo. Se entregue sem medo. Deixe Deus tocar onde precisa tocar, curar o que precisa ser curado e fortalecer o que precisa crescer.
+
+Estou rezando por você, confiando que o Espírito Santo está fazendo algo grande na sua vida 🙏✨
+
+Com todo meu carinho ❤️
+        </p>
+    </div>
+
+</div>
+
+<script>
+
+const musica = document.getElementById("musica");
+
+/* Iniciar música ao primeiro clique */
+document.body.addEventListener("click", function(){
+    musica.volume = 0.5;
+    musica.play();
+}, { once: true });
+
+let cartaAtual = "";
+
+function abrirSenha(tipo){
+    cartaAtual = tipo;
+    document.getElementById("senhaArea").innerHTML = `
+        <p>Digite a senha:</p>
+        <input type="password" id="senhaInput">
+        <br><br>
+        <button onclick="verificar()">Entrar</button>
+    `;
+}
+
+function verificar(){
+    let senha = document.getElementById("senhaInput").value;
+
+    if(cartaAtual==="shimura" && senha==="22062024"){
+        document.getElementById("envelopeArea").style.display="block";
+        document.getElementById("senhaArea").innerHTML="";
+    }
+    else if(cartaAtual==="miguel" && senha==="11012023"){
+        document.getElementById("envelopeArea").style.display="block";
+        document.getElementById("senhaArea").innerHTML="";
+    }
+    else{
+        alert("Senha incorreta 😢");
+    }
+}
+
+function mostrarCarta(){
+    document.getElementById("envelopeArea").style.display="none";
+
+    if(cartaAtual==="shimura"){
+        document.getElementById("cartaShimura").style.display="block";
+    } else {
+        document.getElementById("cartaMiguel").style.display="block";
+    }
+}
+
+</script>
+
+</body>
+</html>
